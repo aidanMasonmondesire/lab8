@@ -24,7 +24,8 @@ def create_quiz():
     # INCOMPLETE: Return a JSON response with the quiz ID and a 201 status
     # Use jsonify to create a JSON response containing
     # `message` and `quiz_id`, with status code 201
-    return jsonify({'message': 'Quiz created successfully', 'quiz_id': quiz_id}), 201
+    return jsonify({'message': 'Quiz created successfully',
+                    'quiz_id': quiz_id}), 201
 
 
 @quiz_bp.route('/<int:quiz_id>', methods=['GET'])
@@ -43,7 +44,8 @@ def get_quiz(quiz_id):
     if quiz is None:
         return jsonify({'error': 'Quiz not found'}), 404
     else:
-        return jsonify({'id': quiz['id'], 'title': quiz['title'], 'questions': quiz['questions']}), 200
+        return jsonify({'id': quiz['id'], 'title': quiz['title'],
+                        'questions': quiz['questions']}), 200
 
 
 @quiz_bp.route('/<int:quiz_id>/submit', methods=['POST'])
@@ -57,8 +59,10 @@ def submit_quiz(quiz_id):
     # `request.json.get('answers')` and store in `user_answers`
     user_answers = request.json.get('answers')
 
-    # INCOMPLETE: Use the service to evaluate the quiz with the provided answers
-    # Call `evaluate_quiz` with `quiz_id` and `user_answers` and store the result in `score` and `message`
+    # INCOMPLETE: Use the service to evaluate
+    # the quiz with the provided answers
+    # Call `evaluate_quiz` with `quiz_id` and
+    # `user_answers` and store the result in `score` and `message`
     score, message = service.evaluate_quiz(quiz_id, user_answers)
 
     # INCOMPLETE: Check if evaluation was successful and return the response
