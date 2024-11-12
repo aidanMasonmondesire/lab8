@@ -10,7 +10,7 @@ class QuizService:
         questions = quiz_data.get('questions')
 
         # INCOMPLETE: Create a new QuizModel instance
-        #Initialize a QuizModel with `title` and `questions` 
+        # Initialize a QuizModel with `title` and `questions`
         # (Hint: quiz = QuizModel(title, questions))
         quiz = QuizModel(title, questions)
 
@@ -21,9 +21,9 @@ class QuizService:
 
     def get_quiz(self, quiz_id):
         # INCOMPLETE: Retrieve a quiz by its ID using the model
-        #Use QuizModel's `get_quiz` method to retrieve the quiz and return it
+        # Use QuizModel's `get_quiz` method to retrieve the quiz and return it
         return QuizModel.get_quiz(quiz_id)
-    
+
     def evaluate_quiz(self, quiz_id, user_answers):
         # INCOMPLETE: Retrieve the quiz by its ID
         # TODO: Call `get_quiz` with `quiz_id` and store the result in `quiz`
@@ -35,7 +35,7 @@ class QuizService:
             return None, "Quiz not found"
 
         # INCOMPLETE: Calculate the score based on correct answers
-        # TODO: Compare `user_answers` with `quiz.questions`, 
+        # TODO: Compare `user_answers` with `quiz.questions`,
         # count correct answers, and return the score
         correct = 0
         for i, question in enumerate(quiz.questions):

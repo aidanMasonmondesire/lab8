@@ -11,7 +11,8 @@ def test_create_quiz(mock_create_quiz, client):
     mock_create_quiz.return_value = 1
 
     # INCOMPLETE: Make a POST request to create a quiz
-    # TODO: Use `client.post` to send a POST request to `/api/quizzes` with JSON data
+    # TODO: Use `client.post` to send a POST
+    # request to `/api/quizzes` with JSON data
     new_quiz = {
         "title": "Sample Quiz",
         "questions": [
@@ -22,16 +23,18 @@ def test_create_quiz(mock_create_quiz, client):
     response = client.post('/api/quizzes', json=new_quiz)
 
     # INCOMPLETE: Write assertions to check the response
-    # TODO: Assert that status code is 201, `quiz_id` in response is 1, and `mock_create_quiz` was called once
+    # TODO: Assert that status code is 201, `quiz_id`
+    # in response is 1, and `mock_create_quiz` was called once
     assert response.status_code == 201
     assert response.json['quiz_id'] == 1
     mock_create_quiz.assert_called_once()
+
 
 # Test for retrieving a quiz by ID
 @patch.object(QuizService, 'get_quiz')
 def test_get_quiz(mock_get_quiz, client):
     # INCOMPLETE: Set up the mock to simulate a QuizModel object
-    #Create a MagicMock named `mock_quiz`, 
+    # Create a MagicMock named `mock_quiz`,
     # set `title` to "Sample Quiz", and `questions` to a sample list
 
     mock_quiz = MagicMock()
@@ -51,7 +54,8 @@ def test_get_quiz(mock_get_quiz, client):
     response = client.get('/api/quizzes/1')
 
     # INCOMPLETE: Write assertions to check the response
-    # TODO: Assert that status code is 200, `title` in response is "Sample Quiz", and `mock_get_quiz` was called once
+    # TODO: Assert that status code is 200, `title` in response is
+    # "Sample Quiz", and `mock_get_quiz` was called once
     assert response.status_code == 200
     assert response.json == {
         'id': 1,
@@ -64,22 +68,26 @@ def test_get_quiz(mock_get_quiz, client):
 
     mock_get_quiz.assert_called_once_with(1)
 
+
 # Test for submitting answers and evaluating a quiz
 @patch.object(QuizService, 'evaluate_quiz')
 def test_submit_quiz(mock_evaluate_quiz, client):
     # INCOMPLETE: Set up the mock to simulate score calculation
-    # TODO: Set `mock_evaluate_quiz.return_value` to (1, "Quiz evaluated successfully")
+    # TODO: Set `mock_evaluate_quiz.return_value`
+    # to (1, "Quiz evaluated successfully")
     mock_evaluate_quiz.return_value = {2, "Quiz evaluated successfully"}
 
     # INCOMPLETE: Make a POST request to submit answers for a quiz
-    # TODO: Use `client.post` to send a POST request to `/api/quizzes/1/submit` with JSON data containing answers
+    # TODO: Use `client.post` to send a POST request to
+    # `/api/quizzes/1/submit` with JSON data containing answers
     user_answers = {'answers': ['4', 'Paris']}
 
     response = client.post('/api/quizzes/1/submit', json=user_answers)
 
     # INCOMPLETE: Write assertions to check the response
     # TODO: Assert that status code is 200, `score` in response is 1,
-    # `message` is "Quiz evaluated successfully", and `mock_evaluate_quiz` was called once
+    # `message` is "Quiz evaluated successfully",
+    # and `mock_evaluate_quiz` was called once
     assert response.status_code == 200
     assert response.json['score'] == 2
     assert response.json['message'] == "Quiz evaluated successfully"

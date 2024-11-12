@@ -21,18 +21,19 @@ class QuizModel(db.Model):
 
     def __init__(self, title, questions):
         # INCOMPLETE: Initialize the model with title and questions
-        #Assign `self.title` and `self.questions` with `title` and `questions`
+        # Assign `self.title` and `self.questions` with `title` and `questions`
         self.title = title
         self.questions = questions
 
     def save(self):
         # INCOMPLETE: Save the quiz to the database
-        #Use `db.session.add(self)` and `db.session.commit()` to save the instance
+        # Use `db.session.add(self)` and
+        # `db.session.commit()` to save the instance
         db.session.add(self)
         db.commit()
 
     @classmethod
     def get_quiz(cls, quiz_id):
         # INCOMPLETE: Retrieve a quiz by its ID
-        #Use `cls.query.get(quiz_id)` to retrieve a quiz and return it
+        # Use `cls.query.get(quiz_id)` to retrieve a quiz and return it
         return cls.query.get(quiz_id)
