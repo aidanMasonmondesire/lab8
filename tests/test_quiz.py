@@ -48,7 +48,7 @@ def test_get_quiz(mock_get_quiz, client):
     # INCOMPLETE: Assign the mock quiz to `mock_get_quiz.return_value`
     # TODO: Set `mock_get_quiz.return_value` to `mock_quiz`
     mock_get_quiz.return_value = {'id': mock_quiz.id, 'title': mock_quiz.title,
-                                'questions': mock_quiz.questions}
+                                  'questions': mock_quiz.questions}
 
     # INCOMPLETE: Make a GET request to retrieve the quiz
     # TODO: Use `client.get` to send a GET request to `/api/quizzes/1`
