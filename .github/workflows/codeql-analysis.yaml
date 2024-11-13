@@ -6,7 +6,7 @@ on:
     branches: [master]
 permissions:
   contents: read
-  pull-requests: write
+  pull-requests: write-all
 jobs:
   analyze:
     runs-on: ubuntu-latest
